@@ -1,0 +1,1023 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "\n%pyspark\n\ndef parse_movie_record(s):\n    id = s.split(\",\")[0]\n    genres = s.split(\",\")[-1]\n    name = ','.join(s.split(\",\")[1:-1])\n    name = name.replace('\"','')\n    return (id,name,genres)\n\nmovies = sc.textFile('/user/vlad/movies/movies.csv')\nfirst_line = movies.take(1)[0]\nmovies = movies.filter(lambda x: x != first_line)\nmovies = movies.map(parse_movie_record)\n\nmovies.take(5)\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T05:48:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[('1', 'Toy Story (1995)', 'Adventure|Animation|Children|Comedy|Fantasy'), ('2', 'Jumanji (1995)', 'Adventure|Children|Fantasy'), ('3', 'Grumpier Old Men (1995)', 'Comedy|Romance'), ('4', 'Waiting to Exhale (1995)', 'Comedy|Drama|Romance'), ('5', 'Father of the Bride Part II (1995)', 'Comedy')]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=2",
+              "$$hashKey": "object:2244"
+            },
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=3",
+              "$$hashKey": "object:2245"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_705766059",
+      "id": "20230202-105047_974048313",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "dateStarted": "2025-04-13T05:48:08+0000",
+      "dateFinished": "2025-04-13T05:48:15+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1612"
+    },
+    {
+      "text": "%pyspark\nimport re\nimport builtins",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T05:55:38+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744523736746_69922871",
+      "id": "paragraph_1744523736746_69922871",
+      "dateCreated": "2025-04-13T05:55:36+0000",
+      "dateStarted": "2025-04-13T05:55:38+0000",
+      "dateFinished": "2025-04-13T05:55:38+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1613"
+    },
+    {
+      "text": "%md\nFind number of movies in the dataset\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Find number of movies in the dataset</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_1459114829",
+      "id": "20230202-105047_1259607941",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1614"
+    },
+    {
+      "text": "%pyspark\nmovies.count()",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:07:25+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "62423\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=101",
+              "$$hashKey": "object:2395"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744402034573_1290370013",
+      "id": "paragraph_1744402034573_1290370013",
+      "dateCreated": "2025-04-11T20:07:14+0000",
+      "dateStarted": "2025-04-11T20:07:25+0000",
+      "dateFinished": "2025-04-11T20:07:25+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1615"
+    },
+    {
+      "text": "%md\nHow many movies of \"Comedy\" genre database contains?",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>How many movies of &ldquo;Comedy&rdquo; genre database contains?</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_2120472475",
+      "id": "20230202-105047_1577191194",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1616"
+    },
+    {
+      "text": "%pyspark\nmovies.filter(lambda x: 'comedy' in x[2].lower()).count()",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:09:15+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "16870\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=102",
+              "$$hashKey": "object:2499"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744402050273_592477320",
+      "id": "paragraph_1744402050273_592477320",
+      "dateCreated": "2025-04-11T20:07:30+0000",
+      "dateStarted": "2025-04-11T20:09:15+0000",
+      "dateFinished": "2025-04-11T20:09:21+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1617"
+    },
+    {
+      "text": "%md\nWhat are the yealiest and the latest years represented in the database?\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>What are the yealiest and the latest years represented in the database?</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_665747871",
+      "id": "20230202-105047_1485629451",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1618"
+    },
+    {
+      "text": "%pyspark\n\nmovies.flatMap(lambda x: re.findall('\\((\\d{4})\\)', x[1]))\\\n.aggregate(\n    (float(\"inf\"), -float(\"inf\")), \n    lambda x, y: (builtins.min(x[0], int(y)), builtins.max(x[1], int(y))),\n    lambda x, y: (builtins.min(x[0], y[0]), builtins.max(x[1], y[1]))\n    )",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T05:55:35+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(1874, 2019)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=126",
+              "$$hashKey": "object:2603"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744402170305_2034617336",
+      "id": "paragraph_1744402170305_2034617336",
+      "dateCreated": "2025-04-11T20:09:30+0000",
+      "dateStarted": "2025-04-11T20:59:23+0000",
+      "dateFinished": "2025-04-11T20:59:23+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1619"
+    },
+    {
+      "text": "%md\nWhat is the minimum, average and maximum number of genres per single movie?\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>What is the minimum, average and maximum number of genres per single movie?</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_1790316385",
+      "id": "20230202-105047_385359575",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1620"
+    },
+    {
+      "text": "%pyspark\nzero_value = (float(\"inf\"), -1, 0)\nseq_op = (lambda acc, num: (min(acc[0], num), max(acc[1], num), acc[2] + num))\n\ncomb_op = (lambda pt1, pt2: (min(pt1[0], pt2[0]), max(pt1[1], pt2[1]), pt1[2] + pt2[2]))\n\n\nres = list(movies.map(lambda x: len(x[2].split('|')))\\\n    .aggregate(zero_value, seq_op, comb_op))\n\nres = [res[0], res[1], res[2] / movies.count()]\n\nres",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T06:26:32+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[1, 10, 1.7991285263444563]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=31",
+              "$$hashKey": "object:2707"
+            },
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=32",
+              "$$hashKey": "object:2708"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744524666976_1666431901",
+      "id": "paragraph_1744524666976_1666431901",
+      "dateCreated": "2025-04-13T06:11:06+0000",
+      "dateStarted": "2025-04-13T06:26:32+0000",
+      "dateFinished": "2025-04-13T06:26:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1621"
+    },
+    {
+      "text": "%md\nFor each genre, find the number of movies of that genre\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>For each genre, find the number of movies of that genre</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_1921266874",
+      "id": "20230202-105047_1048842349",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1622"
+    },
+    {
+      "text": "%pyspark\n\nmovies.flatMap(lambda x: x[2].split('|')).map(lambda x: (x, 1)).groupByKey().mapValues(lambda x: len(x)).collect()\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T06:51:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[('Children', 2935), ('Fantasy', 2731), ('Romance', 7719), ('Drama', 25606), ('Action', 7348), ('Thriller', 8654), ('Horror', 5989), ('Sci-Fi', 3595), ('IMAX', 195), ('Documentary', 5605), ('Musical', 1054), ('Western', 1399), ('Adventure', 4145), ('Animation', 2929), ('Comedy', 16870), ('Crime', 5319), ('Mystery', 2925), ('War', 1874), ('Film-Noir', 353), ('(no genres listed)', 5062)]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=41",
+              "$$hashKey": "object:2816"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744526703474_1695253891",
+      "id": "paragraph_1744526703474_1695253891",
+      "dateCreated": "2025-04-13T06:45:03+0000",
+      "dateStarted": "2025-04-13T06:51:04+0000",
+      "dateFinished": "2025-04-13T06:51:05+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1623"
+    },
+    {
+      "text": "%md\nShow the list of unique genres represented in the dataset",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Show the list of unique genres represented in the dataset</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_1478907062",
+      "id": "20230202-105047_1583183624",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1624"
+    },
+    {
+      "text": "%pyspark\nmovies.flatMap(lambda x: x[2].split('|')).distinct().collect()",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T06:51:35+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "['Children', 'Fantasy', 'Romance', 'Drama', 'Action', 'Thriller', 'Horror', 'Sci-Fi', 'IMAX', 'Documentary', 'Musical', 'Western', 'Adventure', 'Animation', 'Comedy', 'Crime', 'Mystery', 'War', 'Film-Noir', '(no genres listed)']\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=42",
+              "$$hashKey": "object:2920"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744527076358_1876897519",
+      "id": "paragraph_1744527076358_1876897519",
+      "dateCreated": "2025-04-13T06:51:16+0000",
+      "dateStarted": "2025-04-13T06:51:35+0000",
+      "dateFinished": "2025-04-13T06:51:35+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1625"
+    },
+    {
+      "text": "%md\nWhat is the longest movie name in the dataset?",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>What is the longest movie name in the dataset?</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_2093809053",
+      "id": "20230202-105047_1630404728",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1626"
+    },
+    {
+      "text": "%pyspark\nmovies.map(lambda x: (x[1], len(x[1]))).max(lambda x: x[1])",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T06:55:02+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "('Godzilla, Mothra, and King Ghidorah: Giant Monsters All-Out Attack (Gojira, Mosura, Kingu Gidorâ: Daikaijû sôkôgeki) (Godzilla, Mothra and King Ghidorah: Giant Monsters All-Out Attack) (2001)', 191)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=45",
+              "$$hashKey": "object:3024"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744527101010_1854797539",
+      "id": "paragraph_1744527101010_1854797539",
+      "dateCreated": "2025-04-13T06:51:41+0000",
+      "dateStarted": "2025-04-13T06:55:02+0000",
+      "dateFinished": "2025-04-13T06:55:03+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1627"
+    },
+    {
+      "text": "%md\nShow the list of reused movie names",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Show the list of reused movie names</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_1652765005",
+      "id": "20230202-105047_930526252",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1628"
+    },
+    {
+      "text": "%pyspark\nmovies.map(lambda x: (x[1], 1)).groupByKey().mapValues(lambda x: len(x)).filter(lambda x: x[1] > 1).take(100)",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T06:57:51+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[('Saturn 3 (1980)', 2), ('Hamlet (2000)', 2), ('Lagaan: Once Upon a Time in India (2001)', 2), ('Hostage (2005)', 2), ('War of the Worlds (2005)', 2), ('Casanova (2005)', 2), ('Little Man (2006)', 2), ('Chaos (2005)', 2), ('Noise (2007)', 2), ('Family Life (1971)', 2), ('Blackout (2007)', 2), ('Berlin Calling (2008)', 2), ('9 (2009)', 2), ('Weekend (2011)', 2), ('Good People (2014)', 2), ('Paradise (2013)', 2), ('Crush (2009)', 2), ('Deranged (2012)', 2), ('Ecstasy (2011)', 2), ('Grace (2014)', 2), ('The Reunion (2011)', 2), ('Rebirth (2011)', 2), ('Slow Burn (2000)', 2), ('Eden (2014)', 2), ('The Connection (2014)', 2), ('Black Field (2009)', 2), ('Inside (2012)', 2), ('Rose (2011)', 2), ('Macbeth (2015)', 2), ('The Dream Team (2012)', 2), ('Another World (2014)', 2), ('An Inspector Calls (2015)', 2), ('Operator (2015)', 2), ('The Tunnel (1933)', 2), ('Stranded (2015)', 2), ('The Forest (2016)', 2), ('Forsaken (2016)', 2), ('Camino (2016)', 2), ('The Midnight Man (2016)', 2), ('Office (2015)', 2), ('Apparition (2014)', 2), ('The Promise (2016)', 2), ('Classmates (2016)', 2), ('The Void (2016)', 2), ('Suckerfish (1999)', 2), ('Escape Room (2017)', 2), ('Veronica (2017)', 2), ('Let There Be Light (2017)', 2), ('Alone (2017)', 2), ('Haunted (2017)', 2), ('Cold War (2018)', 2), ('Delirium (2018)', 2), ('Feral (2018)', 2), ('Reset (2017)', 2), ('Believer (2018)', 2), ('The Angel (2018)', 2), ('Lost & Found (2018)', 2), ('I See You (2019)', 2), ('Beats (2019)', 2), ('The Lonely Island Presents: The Unauthorized Bash Brothers Experience (2019)', 2), ('American Woman (2019)', 2), ('Aladdin (1992)', 2), ('Men with Guns (1997)', 2), ('Dracula (1931)', 2), ('Gossip (2000)', 2), ('Clockstoppers (2002)', 2), ('Confessions of a Dangerous Mind (2002)', 2), ('Eros (2004)', 2), ('Enron: The Smartest Guys in the Room (2005)', 2), ('Journey to the Center of the Earth (2008)', 2), ('Seven Years Bad Luck (1921)', 2), ('Frozen (2010)', 2), ('Home (2008)', 2), ('Beneath (2013)', 2), ('Clear History (2013)', 2), ('Simple Things (2007)', 2), ('Delirium (2014)', 2), ('The Plague (2006)', 2), ('Holiday (2014)', 2), ('Absolution (2015)', 2), ('Tag (2015)', 2), ('Truth (2015)', 2), ('Escalation (1968)', 2), ('Shelter (2015)', 2), ('Interrogation (2016)', 2), ('The Boss (2016)', 2), ('The Break-In (2016)', 2), ('Savage (2011)', 2), ('Free Fall (2014)', 2), ('Sing (2016)', 2), ('Detour (2017)', 2), ('Home (2016)', 2), ('Ava (2017)', 2), ('Blockbuster (2017)', 2), ('Lucky (2017)', 2), ('Blood Money (2017)', 2), ('Contact (1992)', 2), ('Cargo (2017)', 2)]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=48",
+              "$$hashKey": "object:3128"
+            },
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=49",
+              "$$hashKey": "object:3129"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744527310941_241250648",
+      "id": "paragraph_1744527310941_241250648",
+      "dateCreated": "2025-04-13T06:55:10+0000",
+      "dateStarted": "2025-04-13T06:57:51+0000",
+      "dateFinished": "2025-04-13T06:57:58+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1629"
+    },
+    {
+      "text": "%md\nUsing the result for the previous task, show top 10 most frequently used film names\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-11T20:04:50+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12,
+        "editorHide": true,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Using the result for the previous task, show top 10 most frequently used film names</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744401890803_2080845286",
+      "id": "20230202-105047_695197143",
+      "dateCreated": "2025-04-11T20:04:50+0000",
+      "status": "READY",
+      "$$hashKey": "object:1630"
+    },
+    {
+      "text": "%pyspark\n\nmovies.map(lambda x: (x[1], 1)).reduceByKey(lambda x,y: x + y).filter(lambda x: x[1] > 1).sortBy(lambda x: x[1], ascending=False).take(10)",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T07:01:52+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[('Saturn 3 (1980)', 2), ('Hamlet (2000)', 2), ('Lagaan: Once Upon a Time in India (2001)', 2), ('Hostage (2005)', 2), ('War of the Worlds (2005)', 2), ('Casanova (2005)', 2), ('Little Man (2006)', 2), ('Chaos (2005)', 2), ('Noise (2007)', 2), ('Family Life (1971)', 2)]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=52",
+              "$$hashKey": "object:3237"
+            },
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=53",
+              "$$hashKey": "object:3238"
+            },
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=54",
+              "$$hashKey": "object:3239"
+            },
+            {
+              "jobUrl": "http://ip-172-31-6-219.ec2.internal:4040/jobs/job?id=55",
+              "$$hashKey": "object:3240"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744527629484_526496057",
+      "id": "paragraph_1744527629484_526496057",
+      "dateCreated": "2025-04-13T07:00:29+0000",
+      "dateStarted": "2025-04-13T07:01:52+0000",
+      "dateFinished": "2025-04-13T07:01:53+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1631"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-13T07:01:02+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1744527662504_752430894",
+      "id": "paragraph_1744527662504_752430894",
+      "dateCreated": "2025-04-13T07:01:02+0000",
+      "status": "READY",
+      "$$hashKey": "object:1632"
+    }
+  ],
+  "name": "Homework 1 - VLAd",
+  "id": "2KU4VVW81",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.11.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Homework 1 - VLAd"
+}
